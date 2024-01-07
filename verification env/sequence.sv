@@ -24,7 +24,6 @@ class a_base_sequence extends uvm_sequence;
         base.HBURST<=3'b000;
         base.HREADY<=1;
         base.HPROT<=4'b0011;
-
         base.PREADY<=1;
 
     endtask

@@ -1,5 +1,7 @@
 class a_env extends uvm_env;
+    
     `uvm_component_utils(a_env)
+    a_agent agnt;
 
 
     function new(string name= "a_env", uvm_component parent);
@@ -7,7 +9,8 @@ class a_env extends uvm_env;
     endfunction
 
     function void build_phase(uvm_phase phase);
-        super.connect_phase(phase);
+        super.build_phase(phase);
+        agnt=a_agent::type_id::create("agnt",this)
     endfunction
 
     function void connect_phase(uvm_phase phase);

@@ -8,6 +8,15 @@
 `include "ahb3lite_pkg.sv"
 `include "ahb3lite_apb_bridge.sv"
 `include "defines.svh"
+`include "seq_item.sv"
+`include "sequence.sv"
+`include "sequencer.sv"
+`include "driver.sv"
+`include "monitor.sv"
+`include "agent.sv"
+`include "env.sv"
+`include "test.sv"
+
 module top;
 
     logic HCLK, PCLK;
@@ -83,7 +92,7 @@ end
 
 // Maximum simulation time
 initial begin
-    #1000
+    #100
     `uvm_warning(get_name(), "Simulation has reached its maximum simulation time.....")
     `uvm_error(get_name(), "Forcing simulator to end current simulation.")
     $finish();
@@ -93,6 +102,10 @@ end
 initial begin
     $dumpfile("wave.vcd")
     $dumpvars();
+end
+
+initial begin
+    run_test("a_test");
 end
 
 endmodule: TOP
